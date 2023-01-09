@@ -1,15 +1,30 @@
 -- vscode
 vim.o.background = "dark"
 
+local ok, rose = pcall(require, "rose-pine")
+
+if not ok then
+	return
+end
+
+rose.setup({
+	dim_nc_background = true,
+	disable_background = true,
+	disable_float_background = true,
+	disable_italics = true,
+})
+
+vim.cmd("colorscheme rose-pine")
+
 -- gruvbox
 
-vim.g.gruvbox_baby_transparent_mode = true
-vim.g.gruvbox_baby_keyword_style = false
-
-vim.cmd([[colorscheme gruvbox-baby]])
-
-vim.cmd("hi CursorLineNr guifg=#c7ecee")
-vim.cmd("hi LineNr guifg=#c7ecee")
+-- vim.g.gruvbox_baby_transparent_mode = true
+-- vim.g.gruvbox_baby_keyword_style = false
+--
+-- vim.cmd([[colorscheme gruvbox-baby]])
+--
+-- vim.cmd("hi CursorLineNr guifg=#c7ecee")
+-- vim.cmd("hi LineNr guifg=#c7ecee")
 
 -- end gruvbox
 

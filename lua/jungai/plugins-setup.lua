@@ -97,13 +97,9 @@ return packer.startup(function(use)
 	-- 	"svrana/neosolarized.nvim",
 	-- 	requires = { "tjdevries/colorbuddy.nvim" },
 	-- })
-	-- use({
-	-- 	"rose-pine/neovim",
-	-- 	as = "rose-pine",
-	-- 	config = function()
-	-- 		vim.cmd("colorscheme rose-pine")
-	-- 	end,
-	-- })
+	use({
+		"rose-pine/neovim",
+	})
 	-- use("andweeb/presence.nvim")
 	-- use("xiyaowong/nvim-transparent")
 	-- use("Mofiqul/vscode.nvim")
@@ -113,7 +109,7 @@ return packer.startup(function(use)
 		requires = { "kyazdani42/nvim-web-devicons", opt = true },
 	})
 	-- use("navarasu/onedark.nvim")
-	use("luisiacc/gruvbox-baby")
+	-- use("luisiacc/gruvbox-baby")
 	if packer_bootstrap then
 		require("packer").sync()
 	end
