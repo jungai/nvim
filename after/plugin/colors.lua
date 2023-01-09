@@ -8,6 +8,9 @@ vim.g.gruvbox_baby_keyword_style = false
 
 vim.cmd([[colorscheme gruvbox-baby]])
 
+vim.cmd("hi CursorLineNr guifg=#c7ecee")
+vim.cmd("hi LineNr guifg=#c7ecee")
+
 -- end gruvbox
 
 -- require("onedark").load()
