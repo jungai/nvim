@@ -4,6 +4,7 @@ vim.o.background = "dark"
 -- gruvbox
 
 vim.g.gruvbox_baby_transparent_mode = true
+vim.g.gruvbox_baby_keyword_style = false
 
 vim.cmd([[colorscheme gruvbox-baby]])
 
