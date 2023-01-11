@@ -15,6 +15,19 @@ clone this repo into a `.config` folder
 ```bash
 git clone git@github.com:jungai/nvim.git ~/.config/nvim
 ```
+
+type `nvim` and wait `packer` install all packages
+
+```bash
+nvim
+```
+
+if packer not install automatically run this command for install packages
+
+```vim
+:PackerInstall
+```
+
 ---
 
 Happy coding 😊
