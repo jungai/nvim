@@ -92,14 +92,14 @@ return packer.startup(function(use)
 	use("lewis6991/gitsigns.nvim")
 	-- use("declancm/cinnamon.nvim")
 	-- use("p00f/nvim-ts-rainbow")
-	use("glepnir/dashboard-nvim")
+	-- use("glepnir/dashboard-nvim")
 	-- use({
 	-- 	"svrana/neosolarized.nvim",
 	-- 	requires = { "tjdevries/colorbuddy.nvim" },
 	-- })
-	use({
-		"rose-pine/neovim",
-	})
+	-- use({
+	-- 	"rose-pine/neovim",
+	-- })
 	-- use("andweeb/presence.nvim")
 	-- use("xiyaowong/nvim-transparent")
 	-- use("Mofiqul/vscode.nvim")
@@ -109,7 +109,7 @@ return packer.startup(function(use)
 		requires = { "kyazdani42/nvim-web-devicons", opt = true },
 	})
 	-- use("navarasu/onedark.nvim")
-	-- use("luisiacc/gruvbox-baby")
+	use("luisiacc/gruvbox-baby")
 	if packer_bootstrap then
 		require("packer").sync()
 	end
