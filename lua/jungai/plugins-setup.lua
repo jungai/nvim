@@ -109,7 +109,9 @@ return packer.startup(function(use)
 		requires = { "kyazdani42/nvim-web-devicons", opt = true },
 	})
 	-- use("navarasu/onedark.nvim")
-	use("luisiacc/gruvbox-baby")
+	-- use("luisiacc/gruvbox-baby")
+	-- use("shaunsingh/nord.nvim")
+	use({ "catppuccin/nvim", as = "catppuccin" })
 	if packer_bootstrap then
 		require("packer").sync()
 	end
