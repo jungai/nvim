@@ -23,6 +23,8 @@ keymap.set("n", "<leader>sv", "<C-w>v")
 keymap.set("n", "<leader>sh", "<C-w>s")
 keymap.set("n", "<leader>se", "<C-w>=")
 keymap.set("n", "<leader>sw", ":close<CR>")
+keymap.set("n", "<leader>'", ":vertical resize -5<CR>", { silent = true })
+keymap.set("n", "<leader>;", ":vertical resize +5<CR>", { silent = true })
 
 -- tab
 keymap.set("n", "<leader>to", ":tabnew<CR>")
