@@ -19,10 +19,12 @@ keymap.set("n", "<leader>+", "<C-a>")
 keymap.set("n", "<leader>-", "<C-x>")
 
 -- window
-keymap.set("n", "<leader>sv", "<C-w>v")
-keymap.set("n", "<leader>sh", "<C-w>s")
+keymap.set("n", "<leader>w-", "<C-w>v")
+keymap.set("n", "<leader>w_", "<C-w>s")
 keymap.set("n", "<leader>se", "<C-w>=")
 keymap.set("n", "<leader>sw", ":close<CR>")
+keymap.set("n", "<leader>'", ":vertical resize -5<CR>", { silent = true })
+keymap.set("n", "<leader>;", ":vertical resize +5<CR>", { silent = true })
 
 -- tab
 keymap.set("n", "<leader>to", ":tabnew<CR>")
@@ -53,5 +55,6 @@ keymap.set("n", "<leader>rp", "<Plug>RestNvimPreview")
 
 -- trouble
 keymap.set("n", "<leader>xx", "<cmd>TroubleToggle<CR>", { silent = true, noremap = true })
+keymap.set("n", "<leader>xw", "<cmd>TroubleToggle workspace_diagnostics<CR>", { silent = true, noremap = true })
 
 keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
