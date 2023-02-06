@@ -1,9 +1,9 @@
 return {
 
 	-- catppuccin
-	{
-		"catppuccin/nvim",
-		lazy = true,
-		name = "catppuccin",
-	},
+	-- {
+	-- 	"catppuccin/nvim",
+	-- 	lazy = true,
+	-- 	name = "catppuccin",
+	-- },
 }

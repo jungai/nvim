@@ -16,15 +16,26 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
+	-- {
+	-- 	"folke/tokyonight.nvim",
+	-- 	lazy = false, -- make sure we load this during startup if it is your main colorscheme
+	-- 	priority = 1000, -- make sure to load this before all the other start plugins
+	-- 	config = function()
+	-- 		-- load the colorscheme here
+	-- 		vim.cmd([[colorscheme tokyonight]])
+	-- 	end,
+	-- },
+	--
+	-- "svrana/neosolarized.nvim",
 	{
-		"folke/tokyonight.nvim",
-		lazy = false, -- make sure we load this during startup if it is your main colorscheme
-		priority = 1000, -- make sure to load this before all the other start plugins
+		"catppuccin/nvim",
+		lazy = false,
+		priority = 1000,
+		name = "catppuccin",
 		config = function()
-			-- load the colorscheme here
-			vim.cmd([[colorscheme tokyonight]])
+			vim.cmd.colorscheme("catppuccin")
 		end,
 	},
 
-	{ import = "plugins" }
+	{ import = "plugins" },
 })
