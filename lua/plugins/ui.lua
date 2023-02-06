@@ -79,9 +79,13 @@ return {
 	{
 		"glepnir/lspsaga.nvim",
 		event = "BufRead",
-		config = function()
-			require("lspsaga").setup({})
-		end,
+		opts = {
+			definition = {
+				edit = "<Cr>",
+				quit = "q",
+				close = "<Esc>",
+			},
+		},
 		dependencies = { { "nvim-tree/nvim-web-devicons" } },
 	},
 
