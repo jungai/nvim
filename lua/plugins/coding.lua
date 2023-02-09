@@ -3,9 +3,7 @@ return {
 		"L3MON4D3/LuaSnip",
 		dependencies = {
 			"rafamadriz/friendly-snippets",
-			config = function()
-				require("luasnip.loaders.from_vscode").lazy_load()
-			end,
+			config = true,
 		},
 		opts = {
 			history = true,
@@ -41,6 +39,8 @@ return {
 			"saadparwaiz1/cmp_luasnip",
 		},
 		opts = function()
+			require("luasnip.loaders.from_vscode").lazy_load()
+
 			local cmp = require("cmp")
 			return {
 				completion = {
