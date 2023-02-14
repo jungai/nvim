@@ -123,6 +123,11 @@ return {
 				on_attach = on_attach,
 			})
 
+			lspconfig["volar"].setup({
+				capabilities = capabilities,
+				on_attach = on_attach,
+			})
+
 			vim.diagnostic.config({
 				virtual_text = {
 					prefix = "●",
@@ -204,6 +209,7 @@ return {
 					"prettierd", -- ts/js formatter
 					"stylua", -- lua formatter
 					"eslint_d", -- ts/js linter
+					"misspell",
 				},
 				-- auto-install configured formatters & linters (with null-ls)
 				automatic_installation = true,
@@ -260,6 +266,7 @@ return {
 							return utils.root_has_file(".eslintrc.js") -- change file extension if you use something else
 						end,
 					}),
+					diagnostics.misspell,
 				},
 				-- configure format on save
 				on_attach = function(current_client, bufnr)
