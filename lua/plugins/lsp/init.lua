@@ -195,7 +195,7 @@ return {
 					"marksman",
 					"prismals",
 					"svelte",
-					"terraformls",
+					-- "terraformls",
 					"volar",
 					"yamlls",
 				},
