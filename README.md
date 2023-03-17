@@ -1,6 +1,6 @@
 > previous version with [packer](https://github.com/jungai/nvim/tree/packer)
 
-<img width="971" alt="Screen Shot 2566-01-09 at 21 51 47" src="https://user-images.githubusercontent.com/32437056/211336823-73ff9809-434f-4baf-afe2-73dcc2b64989.png">
+<img width="738" alt="Screen Shot 2566-03-17 at 23 25 52" src="https://user-images.githubusercontent.com/32437056/225962736-73a88b0d-6c2d-490b-8da7-e19b2060b8bd.png">
 
 ## Installation
 
