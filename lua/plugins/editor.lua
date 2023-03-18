@@ -251,8 +251,10 @@ return {
     version = "*",
     cmd = "ToggleTerm",
     keys = {
-      { "<leader>tt", "<cmd>ToggleTerm size=40 dir=~/ direction=float<cr>", mode = "n", desc = "Open Terminal" },
+      { "<leader>tt", "<cmd>ToggleTerm size=40 direction=float<cr>", mode = "n", desc = "Open Terminal" },
     },
-    config = true,
+    opts = {
+      autochdir = true,
+    },
   },
 }
