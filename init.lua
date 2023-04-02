@@ -35,6 +35,7 @@ require("lazy").setup {
     priority = 1000, -- make sure to load this before all the other start plugins
     opts = {
       options = {
+        transparent = true,
         styles = {
           comments = "italic",
           keywords = "bold",
@@ -43,9 +44,7 @@ require("lazy").setup {
       },
     },
     config = function(_, opts)
-      require("nightfox").setup {
-        options = opts,
-      }
+      require("nightfox").setup(opts)
       vim.cmd "colorscheme Duskfox"
     end,
   },
