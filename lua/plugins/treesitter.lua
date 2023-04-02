@@ -38,6 +38,7 @@ return {
         "fish",
         "go",
         "http",
+        "markdown_inline",
       },
       incremental_selection = {
         enable = true,
