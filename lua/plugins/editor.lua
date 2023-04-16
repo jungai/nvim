@@ -173,12 +173,6 @@ return {
     "tpope/vim-fugitive",
     cmd = { "Git", "G" },
   },
-
-  {
-    "gpanders/editorconfig.nvim",
-    event = "VeryLazy",
-  },
-
   {
     "mg979/vim-visual-multi",
     event = "VeryLazy",
