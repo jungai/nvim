@@ -4,7 +4,7 @@
 
 ## Installation
 
-> required `neovim`(>= 0.8), `fzf`, `ripgrep`
+> required `neovim`(>= 0.9), `fzf`, `ripgrep`
 
 install packages
 
