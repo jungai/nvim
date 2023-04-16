@@ -29,23 +29,35 @@ require("lazy").setup {
   --     vscode.load()
   --   end,
   -- },
+  -- {
+  --   "EdenEast/nightfox.nvim",
+  --   lazy = false, -- make sure we load this during startup if it is your main colorscheme
+  --   priority = 1000, -- make sure to load this before all the other start plugins
+  --   opts = {
+  --     options = {
+  --       transparent = true,
+  --       styles = {
+  --         comments = "italic",
+  --         keywords = "bold",
+  --         types = "italic,bold",
+  --       },
+  --     },
+  --   },
+  --   config = function(_, opts)
+  --     require("nightfox").setup(opts)
+  --     vim.cmd "colorscheme Duskfox"
+  --   end,
+  -- },
   {
-    "EdenEast/nightfox.nvim",
-    lazy = false, -- make sure we load this during startup if it is your main colorscheme
-    priority = 1000, -- make sure to load this before all the other start plugins
+    "rose-pine/neovim",
+    name = "rose-pine",
     opts = {
-      options = {
-        transparent = true,
-        styles = {
-          comments = "italic",
-          keywords = "bold",
-          types = "italic,bold",
-        },
-      },
+      dim_nc_background = true,
+      disable_background = true,
     },
     config = function(_, opts)
-      require("nightfox").setup(opts)
-      vim.cmd "colorscheme Duskfox"
+      require("rose-pine").setup(opts)
+      vim.cmd "colorscheme rose-pine"
     end,
   },
   --
