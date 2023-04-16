@@ -133,6 +133,12 @@ return {
         on_attach = on_attach,
       }
 
+      -- TODO: loop this lsp config
+      lspconfig["rome"].setup {
+        capabilities = capabilities,
+        on_attach = on_attach,
+      }
+
       vim.diagnostic.config {
         virtual_text = {
           prefix = "●",
@@ -203,6 +209,7 @@ return {
           -- "terraformls",
           "volar",
           "yamlls",
+          "rome",
         },
         -- auto-install configured servers (with lspconfig)
         automatic_installation = true, -- not the same as ensure_installed
