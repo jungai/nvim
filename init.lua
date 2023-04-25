@@ -54,6 +54,7 @@ require("lazy").setup {
     opts = {
       dim_nc_background = true,
       disable_background = true,
+      disable_italics = true,
     },
     config = function(_, opts)
       require("rose-pine").setup(opts)
