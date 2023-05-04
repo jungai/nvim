@@ -53,7 +53,7 @@ require("lazy").setup {
     name = "rose-pine",
     opts = {
       dim_nc_background = true,
-      disable_background = true,
+      disable_background = false,
       disable_italics = true,
     },
     config = function(_, opts)
