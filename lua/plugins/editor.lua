@@ -6,6 +6,13 @@ return {
       { "<leader>e", "<cmd>NvimTreeFindFileToggle<cr>", desc = "Explorer NeoTree (root dir)", remap = true },
     },
     opts = {
+      filters = {
+        dotfiles = false,
+        git_clean = false,
+      },
+      git = {
+        ignore = false,
+      },
       actions = {
         open_file = {
           window_picker = {
