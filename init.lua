@@ -16,19 +16,19 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup {
-  -- {
-  --   "Mofiqul/vscode.nvim",
-  --   lazy = false, -- make sure we load this during startup if it is your main colorscheme
-  --   priority = 1000, -- make sure to load this before all the other start plugins
-  --   opts = {
-  --     italic_comments = true,
-  --   },
-  --   config = function(_, opts)
-  --     local vscode = require "vscode"
-  --     vscode.setup(opts)
-  --     vscode.load()
-  --   end,
-  -- },
+  {
+    "Mofiqul/vscode.nvim",
+    lazy = false, -- make sure we load this during startup if it is your main colorscheme
+    priority = 1000, -- make sure to load this before all the other start plugins
+    opts = {
+      italic_comments = true,
+    },
+    config = function(_, opts)
+      local vscode = require "vscode"
+      vscode.setup(opts)
+      vscode.load()
+    end,
+  },
   -- {
   --   "EdenEast/nightfox.nvim",
   --   lazy = false, -- make sure we load this during startup if it is your main colorscheme
@@ -48,19 +48,7 @@ require("lazy").setup {
   --     vim.cmd "colorscheme Duskfox"
   --   end,
   -- },
-  {
-    "rose-pine/neovim",
-    name = "rose-pine",
-    opts = {
-      dim_nc_background = true,
-      disable_background = false,
-      disable_italics = true,
-    },
-    config = function(_, opts)
-      require("rose-pine").setup(opts)
-      vim.cmd "colorscheme rose-pine"
-    end,
-  },
+
   --
   -- {
   --   "rose-pine/neovim",
