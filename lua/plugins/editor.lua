@@ -258,4 +258,15 @@ return {
       autochdir = true,
     },
   },
+
+  {
+    "stevearc/oil.nvim",
+    cmd = "Oil",
+    keys = {
+      { "-", "<cmd>Oil<cr>", mode = "n", desc = "Open parent directory" },
+    },
+    -- Optional dependencies
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    config = true,
+  },
 }
