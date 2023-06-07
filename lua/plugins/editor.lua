@@ -269,4 +269,8 @@ return {
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = true,
   },
+  {
+    "NvChad/nvim-colorizer.lua",
+    config = true,
+  },
 }
