@@ -4,6 +4,7 @@ return {
     cmd = "NvimTreeToggle",
     keys = {
       { "<leader>e", "<cmd>NvimTreeFindFileToggle<cr>", desc = "Explorer NeoTree (root dir)", remap = true },
+      { "<leader>-", "<cmd>NvimTreeCollapse<cr>", desc = "Collapse NeoTree", remap = true },
     },
     opts = {
       filters = {
