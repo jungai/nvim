@@ -70,13 +70,21 @@ require("lazy").setup {
   --     background_set = true,
   --   },
   -- },
+  -- {
+  --   "bluz71/vim-nightfly-colors",
+  --   name = "nightfly",
+  --   lazy = false,
+  --   priority = 1000,
+  --   config = function()
+  --     vim.cmd [[colorscheme nightfly]]
+  --   end,
+  -- },
   {
-    "bluz71/vim-nightfly-colors",
-    name = "nightfly",
+    "folke/tokyonight.nvim",
     lazy = false,
     priority = 1000,
     config = function()
-      vim.cmd [[colorscheme nightfly]]
+      vim.cmd [[colorscheme tokyonight-moon]]
     end,
   },
   { import = "plugins" },
