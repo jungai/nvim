@@ -48,7 +48,6 @@ require("lazy").setup {
   --     vim.cmd "colorscheme Duskfox"
   --   end,
   -- },
-
   --
   -- {
   --   "rose-pine/neovim",
@@ -79,12 +78,22 @@ require("lazy").setup {
   --     vim.cmd [[colorscheme nightfly]]
   --   end,
   -- },
+  -- {
+  --   "folke/tokyonight.nvim",
+  --   lazy = false,
+  --   priority = 1000,
+  --   config = function()
+  --     vim.cmd [[colorscheme tokyonight-moon]]
+  --   end,
+  -- },
+
   {
-    "folke/tokyonight.nvim",
-    lazy = false,
-    priority = 1000,
+    "tjdevries/gruvbuddy.nvim",
+    lazy = false, -- make sure we load this during startup if it is your main colorscheme
+    priority = 1000, -- make sure to load this before all the other start plugins
+    dependencies = { "tjdevries/colorbuddy.nvim" },
     config = function()
-      vim.cmd [[colorscheme tokyonight-moon]]
+      require("colorbuddy").colorscheme "gruvbuddy"
     end,
   },
   { import = "plugins" },
