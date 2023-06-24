@@ -4,7 +4,7 @@ return {
     version = false, -- last release is way too old and doesn't work on Windows
     build = ":TSUpdate",
     event = "BufReadPost",
-    dependencies = { { "windwp/nvim-ts-autotag", config = true } },
+    dependencies = { { "windwp/nvim-ts-autotag", config = true }, { "HiPhish/nvim-ts-rainbow2", name = "ts-rainbow" } },
     keys = {
       { "<c-space>", desc = "Increment selection" },
       { "<bs>", desc = "Schrink selection", mode = "x" },
@@ -48,6 +48,9 @@ return {
           scope_incremental = "<nop>",
           node_decremental = "<bs>",
         },
+      },
+      rainbow = {
+        enable = true,
       },
     },
     ---@param opts TSConfig
