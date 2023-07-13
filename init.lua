@@ -69,15 +69,16 @@ require("lazy").setup {
   --     background_set = true,
   --   },
   -- },
-  -- {
-  --   "bluz71/vim-nightfly-colors",
-  --   name = "nightfly",
-  --   lazy = false,
-  --   priority = 1000,
-  --   config = function()
-  --     vim.cmd [[colorscheme nightfly]]
-  --   end,
-  -- },
+  {
+    "bluz71/vim-nightfly-colors",
+    name = "nightfly",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      vim.g.nightflyVirtualTextColor = true
+      vim.cmd [[colorscheme nightfly]]
+    end,
+  },
   -- {
   --   "folke/tokyonight.nvim",
   --   lazy = false,
@@ -87,14 +88,14 @@ require("lazy").setup {
   --   end,
   -- },
 
-  {
-    "tjdevries/gruvbuddy.nvim",
-    lazy = false, -- make sure we load this during startup if it is your main colorscheme
-    priority = 1000, -- make sure to load this before all the other start plugins
-    dependencies = { "tjdevries/colorbuddy.nvim" },
-    config = function()
-      require("colorbuddy").colorscheme "gruvbuddy"
-    end,
-  },
+  -- {
+  --   "tjdevries/gruvbuddy.nvim",
+  --   lazy = false, -- make sure we load this during startup if it is your main colorscheme
+  --   priority = 1000, -- make sure to load this before all the other start plugins
+  --   dependencies = { "tjdevries/colorbuddy.nvim" },
+  --   config = function()
+  --     require("colorbuddy").colorscheme "gruvbuddy"
+  --   end,
+  -- },
   { import = "plugins" },
 }
