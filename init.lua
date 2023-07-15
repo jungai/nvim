@@ -75,6 +75,7 @@ require("lazy").setup {
     lazy = false,
     priority = 1000,
     config = function()
+      vim.g.nightflyTransparent = true
       vim.g.nightflyVirtualTextColor = true
       vim.cmd [[colorscheme nightfly]]
     end,
