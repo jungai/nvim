@@ -201,7 +201,7 @@ return {
           "astro",
           "dockerls",
           "elixirls",
-          "gopls",
+          -- "gopls",
           "graphql",
           "jsonls",
           "marksman",
@@ -222,7 +222,7 @@ return {
           "prettierd", -- ts/js formatter
           "stylua", -- lua formatter
           "eslint_d", -- ts/js linter
-          "misspell",
+          -- "misspell",
         },
         -- auto-install configured formatters & linters (with null-ls)
         automatic_installation = true,
