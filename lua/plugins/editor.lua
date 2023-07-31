@@ -322,4 +322,8 @@ return {
       }
     end,
   },
+  {
+    "chiedo/vim-case-convert",
+    event = "VeryLazy",
+  },
 }
