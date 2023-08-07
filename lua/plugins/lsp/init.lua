@@ -222,6 +222,7 @@ return {
           "prettierd", -- ts/js formatter
           "stylua", -- lua formatter
           "eslint_d", -- ts/js linter
+          "codespell",
           -- "misspell",
         },
         -- auto-install configured formatters & linters (with null-ls)
@@ -280,7 +281,7 @@ return {
               return utils.root_has_file ".eslintrc.js" -- change file extension if you use something else
             end,
           },
-          diagnostics.misspell,
+          diagnostics.codespell,
         },
         -- configure format on save
         on_attach = function(current_client, bufnr)
