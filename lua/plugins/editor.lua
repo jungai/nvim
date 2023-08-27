@@ -268,7 +268,11 @@ return {
     },
     -- Optional dependencies
     dependencies = { "nvim-tree/nvim-web-devicons" },
-    config = true,
+    opts = {
+      view_options = {
+        show_hidden = true,
+      },
+    },
   },
   {
     "NvChad/nvim-colorizer.lua",
@@ -326,18 +330,18 @@ return {
     "chiedo/vim-case-convert",
     event = "VeryLazy",
   },
-  {
-    "lukas-reineke/indent-blankline.nvim",
-    event = "BufRead",
-    config = function()
-      vim.opt.list = true
-      vim.opt.listchars:append "eol:↴"
-
-      require("indent_blankline").setup {
-        show_end_of_line = true,
-      }
-    end,
-  },
+  -- {
+  --   "lukas-reineke/indent-blankline.nvim",
+  --   event = "BufRead",
+  --   config = function()
+  --     vim.opt.list = true
+  --     vim.opt.listchars:append "eol:↴"
+  --
+  --     require("indent_blankline").setup {
+  --       show_end_of_line = true,
+  --     }
+  --   end,
+  -- },
   {
     "folke/flash.nvim",
     event = "VeryLazy",
