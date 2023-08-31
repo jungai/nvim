@@ -356,4 +356,20 @@ return {
     { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
   },
   },
+  {
+    "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    event = "InsertEnter",
+    config = function()
+      require("copilot").setup {
+        panel = {
+          auto_refresh = true,
+        },
+        suggestion = {
+          auto_trigger = true,
+          debounce = 40,
+        },
+      }
+    end,
+  },
 }
