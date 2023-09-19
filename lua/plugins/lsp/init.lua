@@ -19,13 +19,14 @@ return {
         local opts = { noremap = true, silent = true, buffer = bufnr }
 
         -- set keybinds
-        keymap.set("n", "gf", "<cmd>Lspsaga lsp_finder<CR>", opts) -- show definition, references
+        -- keymap.set("n", "gf", "<cmd>Lspsaga lsp_finder<CR>", opts) -- show definition, references
         keymap.set("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts) -- got to declaration
         -- keymap.set("n", "gd", "<cmd>Lspsaga goto_definition<CR>", opts) -- see definition and make edits in window
         keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts)
-        keymap.set("n", "gp", "<cmd>Lspsaga peek_type_definition<CR>", opts) -- see definition and make edits in window
+        -- keymap.set("n", "gp", "<cmd>Lspsaga peek_type_definition<CR>", opts) -- see definition and make edits in window
         keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts) -- go to implementation
-        keymap.set("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", opts) -- see available code actions
+        -- keymap.set("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", opts) -- see available code actions
+        keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts)
         -- keymap.set("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", opts) -- smart rename
         keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
         -- keymap.set("n", "<leader>D", "<cmd>Lspsaga show_line_diagnostics<CR>", opts) -- show  diagnostics for line
@@ -38,7 +39,7 @@ return {
         keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
         -- keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>", opts) -- show documentation for what is under cursor
         keymap.set("n", "K", vim.lsp.buf.hover, opts)
-        keymap.set("n", "<leader>o", "<cmd>LSoutlineToggle<CR>", opts) -- see outline on right hand side
+        -- keymap.set("n", "<leader>o", "<cmd>LSoutlineToggle<CR>", opts) -- see outline on right hand side
         keymap.set("n", "gr", vim.lsp.buf.references, opts)
         -- typescript specific keymaps (e.g. rename file and update imports)
         if client.name == "tsserver" then
