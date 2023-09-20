@@ -26,3 +26,4 @@ opt.scrolloff = 8
 opt.hlsearch = false
 opt.incsearch = true
 opt.wrap = false
+opt.signcolumn = "yes"
