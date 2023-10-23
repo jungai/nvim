@@ -281,6 +281,7 @@ return {
           -- formatting.prettier.with(file_types), -- js/ts formatter
           formatting.prettierd.with(file_types),
           formatting.stylua, -- lua formatter
+          formatting.buf, -- lua formatter
           formatting.dart_format,
           -- formatting.rome,
           diagnostics.eslint_d.with { -- js/ts linter

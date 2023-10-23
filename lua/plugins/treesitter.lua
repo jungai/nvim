@@ -42,6 +42,7 @@ return {
         "go",
         "http",
         "markdown_inline",
+        "proto",
       },
       incremental_selection = {
         enable = true,
