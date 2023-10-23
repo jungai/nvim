@@ -7,7 +7,6 @@ return {
     dependencies = {
       { "windwp/nvim-ts-autotag", config = true },
       "JoosepAlviste/nvim-ts-context-commentstring",
-      -- { "HiPhish/nvim-ts-rainbow2", name = "ts-rainbow" }
     },
     keys = {
       { "<c-space>", desc = "Increment selection" },
@@ -22,16 +21,6 @@ return {
         enable = true,
       },
       context_commentstring = {
-        -- config = {
-        -- javascript = {
-        --   __default = "// %s",
-        --   jsx_element = "{/* %s */}",
-        --   jsx_fragment = "{/* %s */}",
-        --   jsx_attribute = "// %s",
-        --   comment = "// %s",
-        -- },
-        -- typescript = { __default = "// %s", __multiline = "/* %s */" },
-        -- },
         enable = true,
         enable_autocmd = false,
       },
