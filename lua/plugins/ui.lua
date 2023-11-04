@@ -21,16 +21,16 @@ return {
   --   },
   -- },
   --
-  {
-    "akinsho/bufferline.nvim",
-    event = "VeryLazy",
-    opts = {
-      options = {
-        diagnostics = "nvim_lsp",
-        always_show_bufferline = false,
-      },
-    },
-  },
+  -- {
+  --   "akinsho/bufferline.nvim",
+  --   event = "VeryLazy",
+  --   opts = {
+  --     options = {
+  --       diagnostics = "nvim_lsp",
+  --       always_show_bufferline = false,
+  --     },
+  --   },
+  -- },
 
   { "nvim-tree/nvim-web-devicons", lazy = true },
 
