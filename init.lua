@@ -29,17 +29,24 @@ require("lazy").setup {
   --     vim.cmd "colorscheme duskfox"
   --   end,
   -- },
+  -- {
+  --   "bluz71/vim-nightfly-colors",
+  --   name = "nightfly",
+  --   lazy = false,
+  --   priority = 1000,
+  --   config = function()
+  --     vim.g.nightflyCursorColor = true
+  --     vim.g.nightflyTransparent = false
+  --     vim.g.nightflyVirtualTextColor = true
+  --     vim.cmd [[colorscheme nightfly]]
+  --   end,
+  -- },
   {
-    "bluz71/vim-nightfly-colors",
-    name = "nightfly",
+    "folke/tokyonight.nvim",
     lazy = false,
     priority = 1000,
-    config = function()
-      vim.g.nightflyCursorColor = true
-      vim.g.nightflyTransparent = false
-      vim.g.nightflyVirtualTextColor = true
-      vim.cmd [[colorscheme nightfly]]
-    end,
   },
   { import = "plugins" },
 }
+
+vim.cmd [[colorscheme tokyonight]]
