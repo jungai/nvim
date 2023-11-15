@@ -283,14 +283,7 @@ return {
           formatting.stylua, -- lua formatter
           formatting.buf, -- lua formatter
           formatting.dart_format,
-          -- formatting.rome,
-          diagnostics.eslint_d.with { -- js/ts linter
-            -- only enable eslint if root has .eslintrc.js (not in youtube nvim video)
-            filetypes = file_types,
-            condition = function(utils)
-              return utils.root_has_file ".eslintrc.js" -- change file extension if you use something else
-            end,
-          },
+          diagnostics.eslint_d,
           diagnostics.codespell,
         },
         -- configure format on save

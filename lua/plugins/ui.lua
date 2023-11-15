@@ -50,15 +50,40 @@ return {
   {
     "nvim-lualine/lualine.nvim",
     event = "VeryLazy",
-    config = function(_, opts)
+    config = function()
       local lualine = require "lualine"
-      lualine.setup(opts)
+      lualine.setup {
+        sections = {
+          lualine_x = {
+            {
+              require("noice").api.status.message.get_hl,
+              cond = require("noice").api.status.message.has,
+            },
+            {
+              require("noice").api.status.command.get,
+              cond = require("noice").api.status.command.has,
+              color = { fg = "#ff9e64" },
+            },
+            {
+              require("noice").api.status.mode.get,
+              cond = require("noice").api.status.mode.has,
+              color = { fg = "#ff9e64" },
+            },
+            {
+              require("noice").api.status.search.get,
+              cond = require("noice").api.status.search.has,
+              color = { fg = "#ff9e64" },
+            },
+          },
+        },
+      }
     end,
   },
   {
     "folke/noice.nvim",
     event = "VeryLazy",
     opts = {
+      mode = "showmode",
       messages = {
         enabled = true, -- enables the Noice messages UI
         view = false, -- default view for messages
@@ -68,6 +93,9 @@ return {
         view_search = "virtualtext", -- view for search count messages. Set to `false` to disable
       },
       -- add any options here
+      presets = {
+        lsp_doc_border = true,
+      },
     },
     dependencies = {
       -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries

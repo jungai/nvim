@@ -16,17 +16,29 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup {
+  -- {
+  --   "EdenEast/nightfox.nvim",
+  --   lazy = false, -- make sure we load this during startup if it is your main colorscheme
+  --   priority = 1000, -- make sure to load this before all the other start plugins
+  --   config = function()
+  --     require("nightfox").setup {
+  --       options = {
+  --         transparent = true,
+  --       },
+  --     }
+  --     vim.cmd "colorscheme duskfox"
+  --   end,
+  -- },
   {
-    "EdenEast/nightfox.nvim",
-    lazy = false, -- make sure we load this during startup if it is your main colorscheme
-    priority = 1000, -- make sure to load this before all the other start plugins
+    "bluz71/vim-nightfly-colors",
+    name = "nightfly",
+    lazy = false,
+    priority = 1000,
     config = function()
-      require("nightfox").setup {
-        options = {
-          transparent = true,
-        },
-      }
-      vim.cmd "colorscheme duskfox"
+      vim.g.nightflyCursorColor = true
+      vim.g.nightflyTransparent = false
+      vim.g.nightflyVirtualTextColor = true
+      vim.cmd [[colorscheme nightfly]]
     end,
   },
   { import = "plugins" },
