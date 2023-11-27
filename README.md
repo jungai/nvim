@@ -9,7 +9,7 @@
 install packages
 
 ```bash
-brew install neovim fzf ripgrep
+brew install neovim fzf ripgrep gnu-sed
 ```
 
 clone this repo into a `.config` folder
