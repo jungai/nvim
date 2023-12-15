@@ -41,12 +41,13 @@ require("lazy").setup {
   --     vim.cmd [[colorscheme nightfly]]
   --   end,
   -- },
-  {
-    "folke/tokyonight.nvim",
-    lazy = false,
-    priority = 1000,
-  },
+  -- {
+  --   "folke/tokyonight.nvim",
+  --   lazy = false,
+  --   priority = 1000,
+  -- },
+  { "rose-pine/neovim", name = "rose-pine", lazy = false, priority = 1000 },
   { import = "plugins" },
 }
 
-vim.cmd [[colorscheme tokyonight]]
+vim.cmd [[colorscheme rose-pine]]

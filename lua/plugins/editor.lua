@@ -75,14 +75,14 @@ return {
         entry_prefix = "  ",
         initial_mode = "insert",
         selection_strategy = "reset",
-        sorting_strategy = "ascending",
-        layout_strategy = "horizontal",
+        -- sorting_strategy = "ascending",
+        -- layout_strategy = "horizontal",
         layout_config = {
-          horizontal = {
-            prompt_position = "top",
-            preview_width = 0.55,
-            results_width = 0.8,
-          },
+          -- horizontal = {
+          --   prompt_position = "top",
+          --   preview_width = 0.55,
+          --   results_width = 0.8,
+          -- },
           vertical = {
             mirror = false,
           },
@@ -91,7 +91,7 @@ return {
           preview_cutoff = 120,
         },
         border = {},
-        borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+        -- borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
         color_devicons = true,
         mappings = {
           i = {
@@ -111,6 +111,7 @@ return {
       pickers = {
         find_files = {
           hidden = true,
+          previewer = false,
         },
         live_grep = {
           hidden = true,
