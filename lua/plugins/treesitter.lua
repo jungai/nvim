@@ -20,10 +20,6 @@ return {
       autotag = {
         enable = true,
       },
-      context_commentstring = {
-        enable = true,
-        enable_autocmd = false,
-      },
       ensure_installed = {
         "json",
         "javascript",
@@ -56,13 +52,16 @@ return {
           node_decremental = "<bs>",
         },
       },
-      -- rainbow = {
-      --   enable = true,
-      -- },
     },
     ---@param opts TSConfig
     config = function(_, opts)
       require("nvim-treesitter.configs").setup(opts)
+      require("ts_context_commentstring").setup {
+        enable_autocmd = false,
+        languages = {
+          typescript = "// %s",
+        },
+      }
     end,
   },
   -- {

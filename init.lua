@@ -46,12 +46,23 @@ require("lazy").setup {
   --   lazy = false,
   --   priority = 1000,
   -- },
+  -- {
+  --   "catppuccin/nvim",
+  --   name = "catppuccin",
+  --   priority = 1000,
+  --   opts = {
+  --     transparent_background = true,
+  --   },
+  -- },
   {
-    "catppuccin/nvim",
-    name = "catppuccin",
-    priority = 1000,
+    "rose-pine/neovim",
+    name = "rose-pine",
     opts = {
-      transparent_background = true,
+      variant = "moon", -- auto, main, moon, or dawn
+      dark_variant = "moon", -- main, moon, or dawn
+      styles = {
+        transparency = true,
+      },
     },
   },
   -- {
@@ -66,4 +77,4 @@ require("lazy").setup {
   { import = "plugins" },
 }
 
-vim.cmd [[colorscheme catppuccin]]
+vim.cmd [[colorscheme rose-pine]]
