@@ -82,6 +82,30 @@ return {
       lspconfig["tailwindcss"].setup {
         capabilities = capabilities,
         on_attach = on_attach,
+        settings = {
+          tailwindCSS = {
+            experimental = {
+              classRegex = {
+                "tw`([^`]*)",
+                "tw\\.style\\(([^)]*)\\)",
+                'tw="([^"]*)',
+                'tw={"([^"}]*)',
+                "tw\\.\\w+`([^`]*)",
+                "tw\\(.*?\\)`([^`]*)",
+                "cva\\(([^)]*)\\)",
+                "[\"'`]([^\"'`]*).*?[\"'`]",
+                { "cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]" },
+                { "cx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)" },
+              },
+            },
+            classAttributes = {
+              "class",
+              "className",
+              "ngClass",
+              "style",
+            },
+          },
+        },
       }
 
       -- configure emmet language server
@@ -138,6 +162,11 @@ return {
       }
 
       lspconfig["volar"].setup {
+        capabilities = capabilities,
+        on_attach = on_attach,
+      }
+
+      lspconfig["biome"].setup {
         capabilities = capabilities,
         on_attach = on_attach,
       }
@@ -226,11 +255,12 @@ return {
       require("mason-null-ls").setup {
         -- list of formatters & linters for mason to install
         ensure_installed = {
-          -- "prettier", -- ts/js formatter
+          "prettier", -- ts/js formatter
           "prettierd", -- ts/js formatter
           "stylua", -- lua formatter
           "eslint_d", -- ts/js linter
           "codespell",
+          "biome",
           -- "misspell",
         },
         -- auto-install configured formatters & linters (with null-ls)
@@ -283,8 +313,20 @@ return {
           formatting.stylua, -- lua formatter
           formatting.buf, -- lua formatter
           formatting.dart_format,
-          diagnostics.eslint_d,
+          diagnostics.eslint_d.with {
+            condition = function(utils)
+              return utils.root_has_file {
+                ".eslintrc",
+                ".eslintrc.js",
+                ".eslintrc.cjs",
+                ".eslintrc.yaml",
+                ".eslintrc.yml",
+                ".eslintrc.json",
+              }
+            end,
+          },
           diagnostics.codespell,
+          diagnostics.biome,
         },
         -- configure format on save
         on_attach = function(current_client, bufnr)
