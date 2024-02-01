@@ -92,10 +92,9 @@ return {
                 'tw={"([^"}]*)',
                 "tw\\.\\w+`([^`]*)",
                 "tw\\(.*?\\)`([^`]*)",
-                "cva\\(([^)]*)\\)",
-                "[\"'`]([^\"'`]*).*?[\"'`]",
                 { "cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]" },
                 { "cx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)" },
+                { "cn\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)" },
               },
             },
             classAttributes = {
@@ -270,7 +269,7 @@ return {
   },
 
   {
-    "jose-elias-alvarez/null-ls.nvim",
+    "nvimtools/none-ls.nvim",
     event = "BufReadPre",
     dependencies = { "mason.nvim" },
     opts = function()
