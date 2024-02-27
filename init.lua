@@ -54,24 +54,24 @@ require("lazy").setup {
   --     transparent_background = true,
   --   },
   -- },
-  {
-    "Shatur/neovim-ayu",
-    name = "ayu",
-    priority = 1000,
-    opts = {
-      overrides = {
-        Normal = { bg = "None" },
-        ColorColumn = { bg = "None" },
-        SignColumn = { bg = "None" },
-        Folded = { bg = "None" },
-        FoldColumn = { bg = "None" },
-        CursorLine = { bg = "None" },
-        CursorColumn = { bg = "None" },
-        WhichKeyFloat = { bg = "None" },
-        VertSplit = { bg = "None" },
-      },
-    },
-  },
+  -- {
+  --   "Shatur/neovim-ayu",
+  --   name = "ayu",
+  --   priority = 1000,
+  --   opts = {
+  -- overrides = {
+  --   Normal = { bg = "None" },
+  --   ColorColumn = { bg = "None" },
+  --   SignColumn = { bg = "None" },
+  --   Folded = { bg = "None" },
+  --   FoldColumn = { bg = "None" },
+  --   CursorLine = { bg = "None" },
+  --   CursorColumn = { bg = "None" },
+  --   WhichKeyFloat = { bg = "None" },
+  --   VertSplit = { bg = "None" },
+  -- },
+  --   },
+  -- },
   -- {
   --   "rose-pine/neovim",
   --   name = "rose-pine",
@@ -131,7 +131,8 @@ require("lazy").setup {
   --     }
   --   end,
   -- },
+  { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
   { import = "plugins" },
 }
 
-vim.cmd [[colorscheme ayu-mirage]]
+vim.cmd [[colorscheme catppuccin]]
