@@ -449,4 +449,9 @@ return {
     event = "BufReadPre",
     config = true,
   },
+  {
+    "dmmulroy/ts-error-translator.nvim",
+    event = "BufReadPre",
+    config = true,
+  },
 }
