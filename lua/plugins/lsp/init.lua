@@ -8,6 +8,7 @@ return {
       "hrsh7th/nvim-cmp",
       "jose-elias-alvarez/typescript.nvim",
       "akinsho/flutter-tools.nvim",
+      "gleam-lang/gleam.vim",
     },
     config = function()
       local lspconfig = require "lspconfig"
@@ -170,6 +171,11 @@ return {
         on_attach = on_attach,
       }
 
+      lspconfig["gleam"].setup {
+        capabilities = capabilities,
+        on_attach = on_attach,
+      }
+
       -- TODO: loop this lsp config
       -- lspconfig["rome"].setup {
       --   capabilities = capabilities,
@@ -311,6 +317,7 @@ return {
           formatting.prettierd.with(file_types),
           formatting.stylua, -- lua formatter
           formatting.buf, -- lua formatter
+          formatting.gleam_format,
           formatting.dart_format,
           diagnostics.eslint_d.with {
             condition = function(utils)
