@@ -259,6 +259,42 @@ return {
   },
 
   {
+    "mfussenegger/nvim-lint",
+    opts = {
+      linters = {
+        eslint_d = {
+          args = {
+            "--no-warn-ignored", -- <-- this is the key argument
+            "--format",
+            "json",
+            "--stdin",
+            "--stdin-filename",
+            function()
+              return vim.api.nvim_buf_get_name(0)
+            end,
+          },
+        },
+      },
+      linters_by_ft = {
+        javascript = { "eslint_d" },
+        javascriptreact = { "eslint_d" },
+        typescript = { "eslint_d" },
+        typescriptreact = { "eslint_d" },
+      },
+    },
+    config = function(_, opts)
+      local lint = require "lint"
+      lint.linters = opts.linters
+      lint.linters_by_ft = opts.linters_by_ft
+      vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+        callback = function()
+          require("lint").try_lint()
+        end,
+      })
+    end,
+  },
+
+  {
     "stevearc/conform.nvim",
     opts = {
       notify_on_error = false,
@@ -268,7 +304,7 @@ return {
         -- languages here or re-enable it for the disabled ones.
         local disable_filetypes = { c = true, cpp = true }
         return {
-          timeout_ms = 500,
+          timeout_ms = 3000,
           lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
         }
       end,
@@ -278,6 +314,15 @@ return {
         javascriptreact = { { "biome", "prettierd", "prettier" } },
         typescript = { { "biome", "prettierd", "prettier" } },
         typescriptreact = { { "biome", "prettierd", "prettier" } },
+        json = { "prettierd" },
+        css = { "prettierd" },
+        html = { "prettierd" },
+        jsonc = { "prettierd" },
+        markdown = { "prettierd" },
+        ["markdown.mdx"] = { "prettierd" },
+        svelte = { "prettierd" },
+        astro = { "prettierd" },
+        vue = { "prettierd" },
         ["*"] = { "codespell" },
       },
     },
