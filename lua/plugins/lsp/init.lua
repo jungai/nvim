@@ -225,7 +225,6 @@ return {
     "williamboman/mason.nvim",
     dependencies = {
       "williamboman/mason-lspconfig.nvim",
-      "jay-babu/mason-null-ls.nvim",
     },
     keys = { { "<leader>cm", "<cmd>Mason<cr>", desc = "Mason" } },
     config = function()
@@ -252,108 +251,35 @@ return {
           -- "terraformls",
           "volar",
           "yamlls",
-          -- "rome",
         },
         -- auto-install configured servers (with lspconfig)
-        automatic_installation = true, -- not the same as ensure_installed
-      }
-      require("mason-null-ls").setup {
-        -- list of formatters & linters for mason to install
-        ensure_installed = {
-          "prettier", -- ts/js formatter
-          "prettierd", -- ts/js formatter
-          "stylua", -- lua formatter
-          "eslint_d", -- ts/js linter
-          "codespell",
-          "biome",
-          -- "misspell",
-        },
-        -- auto-install configured formatters & linters (with null-ls)
-        automatic_installation = true,
+        automatic_installation = false, -- not the same as ensure_installed
       }
     end,
   },
 
   {
-    "nvimtools/none-ls.nvim",
-    event = "BufReadPre",
-    dependencies = { "mason.nvim" },
-    opts = function()
-      local nls = require "null-ls"
-      local file_types = {
-        filetypes = {
-          "javascript",
-          "javascriptreact",
-          "typescript",
-          "typescriptreact",
-          "vue",
-          "css",
-          "scss",
-          "less",
-          "html",
-          "json",
-          "jsonc",
-          "yaml",
-          "markdown",
-          "markdown.mdx",
-          "graphql",
-          "handlebars",
-          "svelte",
-          "astro",
-        },
-      }
-      -- for conciseness
-      local formatting = nls.builtins.formatting -- to setup formatters
-      local diagnostics = nls.builtins.diagnostics -- to setup linters
-
-      -- to setup format on save
-      local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
-
-      return {
-        sources = {
-          -- --  to disable file types use
-          --  "formatting.prettier.with({disabled_filetypes: {}})" (see null-ls docs)
-          -- formatting.prettier.with(file_types), -- js/ts formatter
-          formatting.prettierd.with(file_types),
-          formatting.stylua, -- lua formatter
-          formatting.buf, -- lua formatter
-          formatting.gleam_format,
-          formatting.dart_format,
-          diagnostics.eslint_d.with {
-            condition = function(utils)
-              return utils.root_has_file {
-                ".eslintrc",
-                ".eslintrc.js",
-                ".eslintrc.cjs",
-                ".eslintrc.yaml",
-                ".eslintrc.yml",
-                ".eslintrc.json",
-              }
-            end,
-          },
-          diagnostics.codespell,
-          diagnostics.biome,
-        },
-        -- configure format on save
-        on_attach = function(current_client, bufnr)
-          if current_client.supports_method "textDocument/formatting" then
-            vim.api.nvim_clear_autocmds { group = augroup, buffer = bufnr }
-            vim.api.nvim_create_autocmd("BufWritePre", {
-              group = augroup,
-              buffer = bufnr,
-              callback = function()
-                vim.lsp.buf.format {
-                  filter = function(client)
-                    --  only use null-ls for formatting instead of lsp server
-                    return client.name == "null-ls"
-                  end,
-                  bufnr = bufnr,
-                }
-              end,
-            })
-          end
-        end,
-      }
-    end,
+    "stevearc/conform.nvim",
+    opts = {
+      notify_on_error = false,
+      format_on_save = function(bufnr)
+        -- Disable "format_on_save lsp_fallback" for languages that don't
+        -- have a well standardized coding style. You can add additional
+        -- languages here or re-enable it for the disabled ones.
+        local disable_filetypes = { c = true, cpp = true }
+        return {
+          timeout_ms = 500,
+          lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
+        }
+      end,
+      formatters_by_ft = {
+        lua = { "stylua" },
+        javascript = { { "biome", "prettierd", "prettier" } },
+        javascriptreact = { { "biome", "prettierd", "prettier" } },
+        typescript = { { "biome", "prettierd", "prettier" } },
+        typescriptreact = { { "biome", "prettierd", "prettier" } },
+        ["*"] = { "codespell" },
+      },
+    },
   },
 }
