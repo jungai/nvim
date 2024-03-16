@@ -225,6 +225,7 @@ return {
     "williamboman/mason.nvim",
     dependencies = {
       "williamboman/mason-lspconfig.nvim",
+      "WhoIsSethDaniel/mason-tool-installer.nvim",
     },
     keys = { { "<leader>cm", "<cmd>Mason<cr>", desc = "Mason" } },
     config = function()
@@ -252,14 +253,28 @@ return {
           "volar",
           "yamlls",
         },
+
         -- auto-install configured servers (with lspconfig)
         automatic_installation = false, -- not the same as ensure_installed
+      }
+
+      local mason_tool_installer = require "mason-tool-installer"
+      mason_tool_installer.setup {
+        ensure_installed = {
+          "prettier",
+          "prettierd",
+          "biome",
+          "codespell",
+          "stylua",
+          "eslint_d",
+        },
       }
     end,
   },
 
   {
     "mfussenegger/nvim-lint",
+    event = { "BufReadPre", "BufNewFile" },
     opts = {
       linters = {
         eslint_d = {
@@ -286,16 +301,29 @@ return {
       local lint = require "lint"
       lint.linters = opts.linters
       lint.linters_by_ft = opts.linters_by_ft
-      vim.api.nvim_create_autocmd({ "BufWritePost" }, {
-        callback = function()
-          require("lint").try_lint()
-        end,
-      })
+
+      local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
+      vim.api.nvim.create_autocmd {
+        "BufEnter",
+        "BufWritePost",
+        "InsertLeave",
+        {
+          group = lint_augroup,
+          callback = function()
+            lint.try_lint()
+          end,
+        },
+      }
+
+      vim.keymap.set("n", "<leader>l", function()
+        lint.try_lint()
+      end, { desc = "Try to linting for current file", noremap = true, silent = true })
     end,
   },
 
   {
     "stevearc/conform.nvim",
+    event = { "BufReadPre", "BufNewFile" },
     opts = {
       notify_on_error = false,
       format_on_save = function(bufnr)
