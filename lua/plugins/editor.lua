@@ -228,46 +228,50 @@ return {
     event = "VeryLazy",
   },
 
-  {
-    "rest-nvim/rest.nvim",
-    branch = "main",
-    dependencies = { "nvim-lua/plenary.nvim" },
-    event = "VeryLazy",
-    opts = {
-      -- Open request results in a horizontal split
-      result_split_horizontal = false,
-      -- Keep the http file buffer above|left when split horizontal|vertical
-      result_split_in_place = false,
-      -- Skip SSL verification, useful for unknown certificates
-      skip_ssl_verification = false,
-      -- Encode URL before making request
-      encode_url = true,
-      -- Highlight request on run
-      highlight = {
-        enabled = true,
-        timeout = 150,
-      },
-      result = {
-        -- toggle showing URL, HTTP info, headers at top the of result window
-        show_url = true,
-        show_http_info = true,
-        show_headers = true,
-        -- executables or functions for formatting response body [optional]
-        -- set them to nil if you want to disable them
-        formatters = {
-          json = "jq",
-          html = function(body)
-            return vim.fn.system({ "tidy", "-i", "-q", "-" }, body)
-          end,
-        },
-      },
-      -- Jump to request line on run
-      jump_to_request = false,
-      env_file = ".env",
-      custom_dynamic_variables = {},
-      yank_dry_run = true,
-    },
-  },
+  -- {
+  --   "rest-nvim/rest.nvim",
+  --   branch = "main",
+  --   name = "rest",
+  --   dependencies = { "nvim-lua/plenary.nvim" },
+  --   event = "VeryLazy",
+  --   opts = {
+  --     -- Open request results in a horizontal split
+  --     result_split_horizontal = false,
+  --     -- Keep the http file buffer above|left when split horizontal|vertical
+  --     result_split_in_place = false,
+  --     -- Skip SSL verification, useful for unknown certificates
+  --     skip_ssl_verification = false,
+  --     -- Encode URL before making request
+  --     encode_url = true,
+  --     -- Highlight request on run
+  --     highlight = {
+  --       enabled = true,
+  --       timeout = 150,
+  --     },
+  --     result = {
+  --       -- toggle showing URL, HTTP info, headers at top the of result window
+  --       show_url = true,
+  --       show_http_info = true,
+  --       show_headers = true,
+  --       -- executables or functions for formatting response body [optional]
+  --       -- set them to nil if you want to disable them
+  --       formatters = {
+  --         json = "jq",
+  --         html = function(body)
+  --           return vim.fn.system({ "tidy", "-i", "-q", "-" }, body)
+  --         end,
+  --       },
+  --     },
+  --     -- Jump to request line on run
+  --     jump_to_request = false,
+  --     env_file = ".env",
+  --     custom_dynamic_variables = {},
+  --     yank_dry_run = true,
+  --   },
+  --   config = function(_, opts)
+  --     require("rest").setup(opts)
+  --   end,
+  -- },
 
   {
     "RRethy/vim-illuminate",
@@ -449,9 +453,32 @@ return {
     event = "BufReadPre",
     config = true,
   },
+  -- {
+  --   "dmmulroy/ts-error-translator.nvim",
+  --   event = "BufReadPre",
+  --   config = true,
+  -- },
   {
-    "dmmulroy/ts-error-translator.nvim",
+    "js-everts/cmp-tailwind-colors",
+    -- optionally, override the default options:
     event = "BufReadPre",
-    config = true,
+    opts = {
+      enable_alpha = true, -- requires pumblend > 0.
+      format = function(itemColor)
+        return {
+          fg = itemColor,
+          bg = itemColor, -- or nil if you dont want a background color
+          text = "  ", -- or use an icon
+        }
+      end,
+    },
+  },
+  {
+    "NvChad/nvim-colorizer.lua",
+    name = "colorizer",
+    event = "BufReadPre",
+    config = function()
+      require("colorizer").attach_to_buffer(0, { mode = "background", css = true, tailwind = "both" })
+    end,
   },
 }

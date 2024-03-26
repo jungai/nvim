@@ -44,6 +44,9 @@ return {
       require("luasnip.loaders.from_vscode").lazy_load()
 
       local cmp = require "cmp"
+      cmp.config.formatting = {
+        format = require("cmp-tailwind-colors").formatter,
+      }
       return {
         completion = {
           completeopt = "menu,menuone,noinsert",
@@ -67,6 +70,9 @@ return {
           { name = "luasnip" },
           { name = "buffer" },
           { name = "path" },
+        },
+        formatting = {
+          format = require("cmp-tailwind-colors").format,
         },
         experimental = {
           -- ghost_text = {
