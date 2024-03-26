@@ -193,6 +193,14 @@ return {
     event = "BufReadPre",
     opts = {
       current_line_blame = true,
+      signs = {
+        add = { text = "+" },
+        change = { text = "c" },
+        delete = { text = "-" },
+        topdelete = { text = "‾" },
+        changedelete = { text = "~" },
+        untracked = { text = "┆" },
+      },
     },
   },
 
