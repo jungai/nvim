@@ -497,4 +497,11 @@ return {
       require("colorizer").attach_to_buffer(0, { mode = "background", css = true, tailwind = "both" })
     end,
   },
+  {
+    "mbbill/undotree",
+    cmd = "UndotreeToggle",
+    keys = {
+      { "<leader>ut", "<cmd>UndotreeToggle<cr>", desc = "Undotree Toggle", remap = true },
+    },
+  },
 }
