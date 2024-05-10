@@ -119,4 +119,8 @@ return {
       }
     end,
   },
+  {
+    "dmmulroy/tsc.nvim",
+    cmd = "TSC",
+  },
 }
