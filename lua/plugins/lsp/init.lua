@@ -176,6 +176,11 @@ return {
         on_attach = on_attach,
       }
 
+      lspconfig["pylsp"].setup {
+        capabilities = capabilities,
+        on_attach = on_attach,
+      }
+
       -- TODO: loop this lsp config
       -- lspconfig["rome"].setup {
       --   capabilities = capabilities,
