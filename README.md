@@ -2,7 +2,7 @@
 
 ## Installation
 
-> required `neovim`(>= 0.9.5), `fzf`, `ripgrep`, `gnu-sed`
+> required `neovim`(>= 0.10.0), `fzf`, `ripgrep`, `gnu-sed`
 
 install packages
 
