@@ -97,6 +97,9 @@ return {
       -- presets = {
       --   lsp_doc_border = true,
       -- },
+      builtin = {
+        border = "rounded",
+      },
       lsp = {
         -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
         override = {
