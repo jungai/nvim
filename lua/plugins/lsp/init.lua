@@ -1,5 +1,9 @@
 return {
   {
+    "folke/neodev.nvim",
+    ft = { "lua" },
+  },
+  {
     "neovim/nvim-lspconfig",
     dependencies = {
       "williamboman/mason.nvim",
@@ -176,10 +180,10 @@ return {
         on_attach = on_attach,
       }
 
-      lspconfig["pylsp"].setup {
-        capabilities = capabilities,
-        on_attach = on_attach,
-      }
+      -- lspconfig["pylsp"].setup {
+      --   capabilities = capabilities,
+      --   on_attach = on_attach,
+      -- }
 
       -- TODO: loop this lsp config
       -- lspconfig["rome"].setup {
@@ -187,12 +191,14 @@ return {
       --   on_attach = on_attach,
       -- }
 
+      require("lspconfig.ui.windows").default_options.border = "rounded"
       vim.diagnostic.config {
         virtual_text = {
           prefix = "●",
         },
         update_in_insert = true,
         float = {
+          border = "rounded",
           source = "always", -- Or "if_many"
         },
       }

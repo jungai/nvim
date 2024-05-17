@@ -510,4 +510,8 @@ return {
       { "<leader>ut", "<cmd>UndotreeToggle<cr>", desc = "Undotree Toggle", remap = true },
     },
   },
+  {
+    "szw/vim-maximizer",
+    cmd = "MaximizerToggle",
+  },
 }
