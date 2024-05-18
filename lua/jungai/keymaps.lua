@@ -29,14 +29,6 @@ keymap.set("n", "<leader>sw", ":close<CR>")
 keymap.set("n", "<leader>'", ":vertical resize -5<CR>", { silent = true })
 keymap.set("n", "<leader>;", ":vertical resize +5<CR>", { silent = true })
 
--- tab
-keymap.set("n", "<leader>to", ":tabnew<CR>")
-keymap.set("n", "<leader>tw", ":tabclose<CR>")
-keymap.set("n", "<leader>[", ":tabn<CR>")
-keymap.set("n", "<leader>]", ":tabp<CR>")
-keymap.set("n", "<TAB>", ":BufferLineCycleNext<CR>")
-keymap.set("n", "<leader>w", ":bd<CR>")
-
 keymap.set("n", "<leader>sm", ":MaximizerToggle<CR>")
 
 -- telescope
@@ -47,10 +39,6 @@ keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>") -- list open buffers
 keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>") -- list available help tags
 keymap.set("n", "<leader>fe", "<cmd>Telescope file_browser<cr>")
 keymap.set("n", "<leader>fu", "<cmd>Telescope flutter commands<cr>")
-
--- rest
-keymap.set("n", "<leader>rr", "<Plug>RestNvim")
-keymap.set("n", "<leader>rp", "<Plug>RestNvimPreview")
 
 -- trouble
 keymap.set("n", "<leader>xx", "<cmd>TroubleToggle<CR>", { silent = true, noremap = true })

@@ -1,5 +1,5 @@
-require "config/options"
-require "config/keymaps"
+require "jungai/options"
+require "jungai/keymaps"
 
 vim.g.mapleader = " "
 local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"

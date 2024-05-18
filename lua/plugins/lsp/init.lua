@@ -1,4 +1,85 @@
+local lspList = {
+  "tsserver",
+  "html",
+  "cssls",
+  "tailwindcss",
+  "lua_ls",
+  "emmet_ls",
+  "bashls",
+  "astro",
+  "dockerls",
+  "elixirls",
+  -- "gopls",
+  "graphql",
+  "jsonls",
+  "marksman",
+  "prismals",
+  "svelte",
+  -- "terraformls",
+  "volar",
+  "biome",
+  "yamlls",
+  "gleam",
+  "pyright",
+}
+
 return {
+  {
+    "hrsh7th/nvim-cmp",
+    version = false, -- last release is way too old
+    event = "InsertEnter",
+    dependencies = {
+      "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/cmp-buffer",
+      "hrsh7th/cmp-path",
+      "saadparwaiz1/cmp_luasnip",
+    },
+    opts = function()
+      require("luasnip.loaders.from_vscode").lazy_load()
+
+      local cmp = require "cmp"
+      cmp.config.formatting = {
+        format = require("cmp-tailwind-colors").formatter,
+      }
+      return {
+        completion = {
+          completeopt = "menu,menuone,noinsert",
+        },
+        snippet = {
+          expand = function(args)
+            require("luasnip").lsp_expand(args.body)
+          end,
+        },
+        mapping = cmp.mapping.preset.insert {
+          ["<C-k>"] = cmp.mapping.select_prev_item(), -- previous suggestion
+          ["<C-j>"] = cmp.mapping.select_next_item(), -- next suggestion
+          ["<C-b>"] = cmp.mapping.scroll_docs(-4),
+          ["<C-f>"] = cmp.mapping.scroll_docs(4),
+          ["<C-Space>"] = cmp.mapping.complete(), -- show completion suggestions
+          ["<C-e>"] = cmp.mapping.abort(), -- close completion window
+          ["<CR>"] = cmp.mapping.confirm { select = false },
+        },
+        sources = cmp.config.sources {
+          { name = "nvim_lsp" },
+          { name = "luasnip" },
+          { name = "buffer" },
+          { name = "path" },
+        },
+        formatting = {
+          format = require("cmp-tailwind-colors").format,
+        },
+        window = {
+          completion = cmp.config.window.bordered(),
+          documentation = cmp.config.window.bordered(),
+        },
+        experimental = {
+          -- ghost_text = {
+          --   hl_group = "LspCodeLens",
+          -- },
+        },
+      }
+    end,
+  },
   {
     "folke/neodev.nvim",
     ft = { "lua" },
@@ -12,7 +93,6 @@ return {
       "hrsh7th/nvim-cmp",
       "jose-elias-alvarez/typescript.nvim",
       "akinsho/flutter-tools.nvim",
-      "gleam-lang/gleam.vim",
     },
     config = function()
       local lspconfig = require "lspconfig"
@@ -63,133 +143,86 @@ return {
         vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
       end
 
-      -- configure html server
-      lspconfig["html"].setup {
-        capabilities = capabilities,
-        on_attach = on_attach,
-      }
+      for _, target_lsp in ipairs(lspList) do
+        if target_lsp == "typescript" then
+          require("typescript").setup {
+            server = {
+              capabilities = capabilities,
+              on_attach = on_attach,
+            },
+          }
+          goto continue
+        end
 
-      -- configure typescript server with plugin
-      require("typescript").setup {
-        server = {
+        if target_lsp == "tailwindcss" then
+          lspconfig["tailwindcss"].setup {
+            capabilities = capabilities,
+            on_attach = on_attach,
+            settings = {
+              tailwindCSS = {
+                experimental = {
+                  classRegex = {
+                    "tw`([^`]*)",
+                    "tw\\.style\\(([^)]*)\\)",
+                    'tw="([^"]*)',
+                    'tw={"([^"}]*)',
+                    "tw\\.\\w+`([^`]*)",
+                    "tw\\(.*?\\)`([^`]*)",
+                    { "cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]" },
+                    { "cx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)" },
+                    { "cn\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)" },
+                  },
+                },
+                classAttributes = {
+                  "class",
+                  "className",
+                  "ngClass",
+                  "style",
+                },
+              },
+            },
+          }
+          goto continue
+        end
+
+        if target_lsp == "emmet_ls" then
+          lspconfig["emmet_ls"].setup {
+            capabilities = capabilities,
+            on_attach = on_attach,
+            filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "svelte" },
+          }
+          goto continue
+        end
+
+        if target_lsp == "lua_ls" then
+          lspconfig["lua_ls"].setup {
+            capabilities = capabilities,
+            on_attach = on_attach,
+            settings = { -- custom settings for lua
+              Lua = {
+                -- make the language server recognize "vim" global
+                diagnostics = {
+                  globals = { "vim" },
+                },
+                workspace = {
+                  -- make language server aware of runtime files
+                  library = {
+                    [vim.fn.expand "$VIMRUNTIME/lua"] = true,
+                    [vim.fn.stdpath "config" .. "/lua"] = true,
+                  },
+                },
+              },
+            },
+          }
+          goto continue
+        end
+
+        lspconfig[target_lsp].setup {
           capabilities = capabilities,
           on_attach = on_attach,
-        },
-      }
-
-      -- configure css server
-      lspconfig["cssls"].setup {
-        capabilities = capabilities,
-        on_attach = on_attach,
-      }
-
-      -- configure tailwindcss server
-      lspconfig["tailwindcss"].setup {
-        capabilities = capabilities,
-        on_attach = on_attach,
-        settings = {
-          tailwindCSS = {
-            experimental = {
-              classRegex = {
-                "tw`([^`]*)",
-                "tw\\.style\\(([^)]*)\\)",
-                'tw="([^"]*)',
-                'tw={"([^"}]*)',
-                "tw\\.\\w+`([^`]*)",
-                "tw\\(.*?\\)`([^`]*)",
-                { "cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]" },
-                { "cx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)" },
-                { "cn\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)" },
-              },
-            },
-            classAttributes = {
-              "class",
-              "className",
-              "ngClass",
-              "style",
-            },
-          },
-        },
-      }
-
-      -- configure emmet language server
-      lspconfig["emmet_ls"].setup {
-        capabilities = capabilities,
-        on_attach = on_attach,
-        filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "svelte" },
-      }
-
-      lspconfig["astro"].setup {
-        capabilities = capabilities,
-        on_attach = on_attach,
-      }
-
-      -- configure lua server (with special settings)
-      lspconfig["lua_ls"].setup {
-        capabilities = capabilities,
-        on_attach = on_attach,
-        settings = { -- custom settings for lua
-          Lua = {
-            -- make the language server recognize "vim" global
-            diagnostics = {
-              globals = { "vim" },
-            },
-            workspace = {
-              -- make language server aware of runtime files
-              library = {
-                [vim.fn.expand "$VIMRUNTIME/lua"] = true,
-                [vim.fn.stdpath "config" .. "/lua"] = true,
-              },
-            },
-          },
-        },
-      }
-
-      lspconfig["jsonls"].setup {
-        capabilities = capabilities,
-        on_attach = on_attach,
-      }
-
-      lspconfig["prismals"].setup {
-        capabilities = capabilities,
-        on_attach = on_attach,
-      }
-
-      lspconfig["dockerls"].setup {
-        capabilities = capabilities,
-        on_attach = on_attach,
-      }
-
-      lspconfig["svelte"].setup {
-        capabilities = capabilities,
-        on_attach = on_attach,
-      }
-
-      lspconfig["volar"].setup {
-        capabilities = capabilities,
-        on_attach = on_attach,
-      }
-
-      lspconfig["biome"].setup {
-        capabilities = capabilities,
-        on_attach = on_attach,
-      }
-
-      lspconfig["gleam"].setup {
-        capabilities = capabilities,
-        on_attach = on_attach,
-      }
-
-      -- lspconfig["pylsp"].setup {
-      --   capabilities = capabilities,
-      --   on_attach = on_attach,
-      -- }
-
-      -- TODO: loop this lsp config
-      -- lspconfig["rome"].setup {
-      --   capabilities = capabilities,
-      --   on_attach = on_attach,
-      -- }
+        }
+        ::continue::
+      end
 
       require("lspconfig.ui.windows").default_options.border = "rounded"
       vim.diagnostic.config {
@@ -243,27 +276,7 @@ return {
       require("mason").setup()
       require("mason-lspconfig").setup {
         -- list of servers for mason to install
-        ensure_installed = {
-          "tsserver",
-          "html",
-          "cssls",
-          "tailwindcss",
-          "lua_ls",
-          "emmet_ls",
-          "bashls",
-          "astro",
-          "dockerls",
-          "elixirls",
-          -- "gopls",
-          "graphql",
-          "jsonls",
-          "marksman",
-          "prismals",
-          "svelte",
-          -- "terraformls",
-          "volar",
-          "yamlls",
-        },
+        ensure_installed = lspList,
 
         -- auto-install configured servers (with lspconfig)
         automatic_installation = false, -- not the same as ensure_installed
@@ -365,5 +378,17 @@ return {
         ["*"] = { "codespell" },
       },
     },
+  },
+  {
+    "glepnir/lspsaga.nvim",
+    event = "BufRead",
+    opts = {
+      definition = {
+        edit = "<Cr>",
+        quit = "q",
+        close = "<Esc>",
+      },
+    },
+    dependencies = { { "nvim-tree/nvim-web-devicons" } },
   },
 }
