@@ -19,7 +19,6 @@ local lspList = {
   "volar",
   "biome",
   "yamlls",
-  "gleam",
   "pyright",
 }
 
