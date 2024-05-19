@@ -22,6 +22,34 @@ local lspList = {
   "pyright",
 }
 
+local kind_icons = {
+  Text = "",
+  Method = "󰆧",
+  Function = "󰊕",
+  Constructor = "",
+  Field = "󰇽",
+  Variable = "󰂡",
+  Class = "󰠱",
+  Interface = "",
+  Module = "",
+  Property = "󰜢",
+  Unit = "",
+  Value = "󰎠",
+  Enum = "",
+  Keyword = "󰌋",
+  Snippet = "",
+  Color = "󰏘",
+  File = "󰈙",
+  Reference = "",
+  Folder = "󰉋",
+  EnumMember = "",
+  Constant = "󰏿",
+  Struct = "",
+  Event = "",
+  Operator = "󰆕",
+  TypeParameter = "󰅲",
+}
+
 return {
   {
     "hrsh7th/nvim-cmp",
@@ -31,15 +59,13 @@ return {
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
+      "onsails/lspkind.nvim",
       "saadparwaiz1/cmp_luasnip",
     },
     opts = function()
       require("luasnip.loaders.from_vscode").lazy_load()
 
       local cmp = require "cmp"
-      cmp.config.formatting = {
-        format = require("cmp-tailwind-colors").formatter,
-      }
       return {
         completion = {
           completeopt = "menu,menuone,noinsert",
@@ -65,7 +91,15 @@ return {
           { name = "path" },
         },
         formatting = {
-          format = require("cmp-tailwind-colors").format,
+          fields = { "abbr", "kind", "menu" }, -- order of columnsb,
+          format = function(entry, item)
+            item.menu = item.kind
+            item = require("cmp-tailwind-colors").format(entry, item)
+            if kind_icons[item.kind] then
+              item.kind = kind_icons[item.kind] .. " "
+            end
+            return item
+          end,
         },
         window = {
           completion = cmp.config.window.bordered(),
