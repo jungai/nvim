@@ -20,6 +20,7 @@ local lspList = {
   "biome",
   "yamlls",
   "pyright",
+  "rust_analyzer",
 }
 
 local kind_icons = {

@@ -57,7 +57,8 @@ return {
       pickers = {
         find_files = {
           hidden = true,
-          previewer = false,
+          previewer = true,
+          find_command = { "rg", "--hidden", "--files" },
         },
         live_grep = {
           hidden = true,
