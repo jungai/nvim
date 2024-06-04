@@ -5,10 +5,10 @@ return {
     opts = {
       routes = {
         -- Show @recording messages
-        {
-          view = "notify",
-          filter = { event = "msg_showmode" },
-        },
+        -- {
+        --   view = "notify",
+        --   filter = { event = "msg_showmode" },
+        -- },
         {
           filter = {
             event = "msg_show",
