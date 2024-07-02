@@ -94,13 +94,14 @@ require("lazy").setup {
   --     vim.cmd.colorscheme "night-owl"
   --   end,
   -- },
-  -- {
-  --   "folke/tokyonight.nvim",
-  --   priority = 1000, -- make sure to load this before all the other start plugins
-  --   opts = {},
-  -- },
-  { "catppuccin/nvim", name = "catppuccin", priority = 1000, event = "VimEnter" },
+  {
+    "folke/tokyonight.nvim",
+    priority = 1000, -- make sure to load this before all the other start plugins
+    opts = {},
+  },
+  -- { "catppuccin/nvim", name = "catppuccin", priority = 1000, event = "VimEnter" },
   { import = "plugins" },
 }
 
-vim.cmd [[colorscheme catppuccin-macchiato]]
+-- vim.cmd [[colorscheme catppuccin-macchiato]]
+vim.cmd [[colorscheme tokyonight]]
