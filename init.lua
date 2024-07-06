@@ -94,14 +94,57 @@ require("lazy").setup {
   --     vim.cmd.colorscheme "night-owl"
   --   end,
   -- },
+  -- {
+  --   "folke/tokyonight.nvim",
+  --   priority = 1000, -- make sure to load this before all the other start plugins
+  --   opts = {},
+  -- },
   {
-    "folke/tokyonight.nvim",
-    priority = 1000, -- make sure to load this before all the other start plugins
-    opts = {},
+    "catppuccin/nvim",
+    name = "catppuccin",
+    priority = 1000,
+    event = "VimEnter",
+    opts = {
+      styles = {
+        comments = { "italic" }, -- Change the style of comments
+        conditionals = { "italic" },
+        loops = { "italic" },
+        functions = {},
+        keywords = { "italic" },
+        strings = {},
+        variables = {},
+        numbers = {},
+        booleans = {},
+        properties = {},
+        types = {},
+        operators = {},
+      },
+    },
   },
-  -- { "catppuccin/nvim", name = "catppuccin", priority = 1000, event = "VimEnter" },
+  -- {
+  --   "2giosangmitom/nightfall.nvim",
+  --   lazy = false,
+  --   priority = 1000,
+  --   opts = {
+  --     styles = {
+  --       comments = { italic = true },
+  --       keywords = {},
+  --       functions = { italic = true },
+  --       variables = {},
+  --       numbers = {},
+  --       conditionals = { italic = true },
+  --       constants = {},
+  --       operators = {},
+  --       strings = {},
+  --       types = {},
+  --       booleans = {},
+  --       loops = { italic = true },
+  --     },
+  --   },
+  -- },
   { import = "plugins" },
 }
 
--- vim.cmd [[colorscheme catppuccin-macchiato]]
-vim.cmd [[colorscheme tokyonight]]
+vim.cmd [[colorscheme catppuccin-macchiato]]
+-- vim.cmd [[colorscheme tokyonight]]
+-- vim.cmd [[colorscheme nightfall]]
