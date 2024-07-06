@@ -27,3 +27,8 @@ opt.hlsearch = false
 opt.incsearch = true
 opt.wrap = false
 opt.signcolumn = "yes"
+
+-- folds
+vim.opt.foldlevel = 99
+vim.opt.foldmethod = "indent"
+vim.opt.foldenable = true
