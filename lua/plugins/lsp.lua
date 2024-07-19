@@ -206,7 +206,7 @@ return {
         -- keymap.set("n", "gf", "<cmd>Lspsaga lsp_finder<CR>", opts) -- show definition, references
         keymap.set("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts) -- got to declaration
         -- keymap.set("n", "gd", "<cmd>Lspsaga goto_definition<CR>", opts) -- see definition and make edits in window
-        keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts)
+        keymap.set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
         -- keymap.set("n", "gp", "<cmd>Lspsaga peek_type_definition<CR>", opts) -- see definition and make edits in window
         keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts) -- go to implementation
         keymap.set("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", opts) -- see available code actions
@@ -456,7 +456,8 @@ return {
         local disable_filetypes = { c = true, cpp = true }
         return {
           timeout_ms = 3000,
-          lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
+          -- lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
+          lsp_format = "fallback",
         }
       end,
       formatters_by_ft = {
