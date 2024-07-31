@@ -3,7 +3,7 @@ return {
     "stevearc/oil.nvim",
     cmd = "Oil",
     keys = {
-      { "-", "<cmd>Oil --float<cr>", mode = "n", desc = "Open parent directory" },
+      { "-", "<cmd>Oil<cr>", mode = "n", desc = "Open parent directory" },
     },
     -- Optional dependencies
     dependencies = { "nvim-tree/nvim-web-devicons" },
