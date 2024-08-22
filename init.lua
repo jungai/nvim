@@ -94,57 +94,39 @@ require("lazy").setup {
   --     vim.cmd.colorscheme "night-owl"
   --   end,
   -- },
-  -- {
-  --   "folke/tokyonight.nvim",
-  --   priority = 1000, -- make sure to load this before all the other start plugins
-  --   opts = {},
-  -- },
   {
-    "catppuccin/nvim",
-    name = "catppuccin",
-    priority = 1000,
-    event = "VimEnter",
+    "folke/tokyonight.nvim",
+    priority = 1000, -- make sure to load this before all the other start plugins
     opts = {
-      styles = {
-        comments = { "italic" }, -- Change the style of comments
-        conditionals = { "italic" },
-        loops = { "italic" },
-        functions = {},
-        keywords = {},
-        strings = {},
-        variables = {},
-        numbers = {},
-        booleans = { "italic" },
-        properties = {},
-        types = {},
-        operators = {},
-      },
+      style = "night",
     },
   },
   -- {
-  --   "2giosangmitom/nightfall.nvim",
-  --   lazy = false,
+  --   "catppuccin/nvim",
+  --   name = "catppuccin",
   --   priority = 1000,
+  --   event = "VimEnter",
   --   opts = {
   --     styles = {
-  --       comments = { italic = true },
+  --       comments = { "italic" }, -- Change the style of comments
+  --       conditionals = { "italic" },
+  --       loops = { "italic" },
+  --       functions = {},
   --       keywords = {},
-  --       functions = { italic = true },
+  --       strings = {},
   --       variables = {},
   --       numbers = {},
-  --       conditionals = { italic = true },
-  --       constants = {},
-  --       operators = {},
-  --       strings = {},
+  --       booleans = { "italic" },
+  --       properties = {},
   --       types = {},
-  --       booleans = {},
-  --       loops = { italic = true },
+  --       operators = {},
   --     },
   --   },
   -- },
   { import = "plugins" },
 }
 
-vim.cmd [[colorscheme catppuccin-macchiato]]
--- vim.cmd [[colorscheme tokyonight]]
+-- vim.cmd [[colorscheme catppuccin-macchiato]]
+-- vim.cmd [[colorscheme catppuccin]]
+vim.cmd [[colorscheme tokyonight]]
 -- vim.cmd [[colorscheme nightfall]]
