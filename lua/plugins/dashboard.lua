@@ -4,12 +4,13 @@ return {
     lazy = false, -- As https://github.com/nvimdev/dashboard-nvim/pull/450, dashboard-nvim shouldn't be lazy-loaded to properly handle stdin.
     opts = function()
       local logo = [[
-     ██╗██╗   ██╗███╗   ██╗ ██████╗  █████╗ ██╗
-     ██║██║   ██║████╗  ██║██╔════╝ ██╔══██╗██║
-     ██║██║   ██║██╔██╗ ██║██║  ███╗███████║██║
-██   ██║██║   ██║██║╚██╗██║██║   ██║██╔══██║██║
-╚█████╔╝╚██████╔╝██║ ╚████║╚██████╔╝██║  ██║██║
- ╚════╝  ╚═════╝ ╚═╝  ╚═══╝ ╚═════╝ ╚═╝  ╚═╝╚═╝
+    /\_____/\
+   /  o   o  \
+  ( ==  ^  == )
+   )         (
+  (           )
+ ( (  )   (  ) )
+(__(__)___(__)__)
   ]]
 
       logo = string.rep("\n", 8) .. logo .. "\n\n"
