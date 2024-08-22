@@ -191,7 +191,7 @@ return {
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/nvim-cmp",
       "jose-elias-alvarez/typescript.nvim",
-      "akinsho/flutter-tools.nvim",
+      -- "akinsho/flutter-tools.nvim",
     },
     config = function()
       local lspconfig = require "lspconfig"
@@ -335,32 +335,32 @@ return {
         },
       }
 
-      require("flutter-tools").setup {
-        -- flutter_path = "/Users/jungai/.asdf/installs/flutter/3.3.2-stable",
-        -- debugger = {
-        -- 	enabled = true,
-        -- 	run_via_dap = true,
-        -- },
-        outline = { auto_open = false },
-        widget_guides = { enabled = true, debug = true },
-        dev_log = { enabled = true, open_cmd = "30vnew", auto_open = true },
-        lsp = {
-          color = {
-            enabled = true,
-            background = true,
-            virtual_text = false,
-          },
-          settings = {
-            showTodos = true,
-            renameFilesWithClasses = "prompt",
-          },
-          on_attach = on_attach,
-          capabilities = capabilities,
-        },
-        settings = {
-          enableSnippets = true,
-        },
-      }
+      -- require("flutter-tools").setup {
+      --   -- flutter_path = "/Users/jungai/.asdf/installs/flutter/3.3.2-stable",
+      --   -- debugger = {
+      --   -- 	enabled = true,
+      --   -- 	run_via_dap = true,
+      --   -- },
+      --   outline = { auto_open = false },
+      --   widget_guides = { enabled = true, debug = true },
+      --   dev_log = { enabled = true, open_cmd = "30vnew", auto_open = true },
+      --   lsp = {
+      --     color = {
+      --       enabled = true,
+      --       background = true,
+      --       virtual_text = false,
+      --     },
+      --     settings = {
+      --       showTodos = true,
+      --       renameFilesWithClasses = "prompt",
+      --     },
+      --     on_attach = on_attach,
+      --     capabilities = capabilities,
+      --   },
+      --   settings = {
+      --     enableSnippets = true,
+      --   },
+      -- }
     end,
   },
 
