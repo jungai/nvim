@@ -23,9 +23,9 @@ return {
       },
       view = {
         adaptive_size = true,
-        -- float = {
-        --   enable = true,
-        -- },
+        float = {
+          enable = true,
+        },
         side = "right",
       },
     },

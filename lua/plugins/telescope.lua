@@ -63,6 +63,9 @@ return {
         live_grep = {
           hidden = true,
         },
+        git_files = {
+          hidden = true,
+        },
         file_browser = {
           hidden = true,
         },
