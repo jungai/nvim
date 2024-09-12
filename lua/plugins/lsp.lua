@@ -1,5 +1,5 @@
 local lspList = {
-  "tsserver",
+  "ts_ls",
   "html",
   "cssls",
   "tailwindcss",
@@ -21,6 +21,7 @@ local lspList = {
   "yamlls",
   "pyright",
   "rust_analyzer",
+  "nil_ls",
 }
 
 local kind_icons = {
@@ -226,7 +227,7 @@ return {
         -- keymap.set("n", "<leader>o", "<cmd>LSoutlineToggle<CR>", opts) -- see outline on right hand side
         keymap.set("n", "gr", vim.lsp.buf.references, opts)
         -- typescript specific keymaps (e.g. rename file and update imports)
-        if client.name == "tsserver" then
+        if client.name == "ts_ls" then
           keymap.set("n", "<leader>rf", ":TypescriptRenameFile<CR>") -- rename file and update imports
           keymap.set("n", "<leader>oi", ":TypescriptOrganizeImports<CR>") -- organize imports (not in youtube nvim video)
           keymap.set("n", "<leader>ru", ":TypescriptRemoveUnused<CR>") -- remove unused variables (not in youtube nvim video)
@@ -390,6 +391,7 @@ return {
           -- "codespell",
           "stylua",
           "eslint_d",
+          "nixpkgs-fmt",
         },
       }
     end,
@@ -475,6 +477,7 @@ return {
         svelte = { "prettierd" },
         astro = { "prettierd" },
         vue = { "prettierd" },
+        nix = { "nixpkgs-fmt" },
         -- ["*"] = { "codespell" },
       },
     },
