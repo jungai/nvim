@@ -94,51 +94,51 @@ require("lazy").setup {
   --     vim.cmd.colorscheme "night-owl"
   --   end,
   -- },
-  -- {
-  --   "folke/tokyonight.nvim",
-  --   priority = 1000, -- make sure to load this before all the other start plugins
-  --   opts = {
-  --     style = "night",
-  --   },
-  -- },
   {
-    "catppuccin/nvim",
-    name = "catppuccin",
-    priority = 1000,
-    event = "VimEnter",
+    "folke/tokyonight.nvim",
+    priority = 1000, -- make sure to load this before all the other start plugins
     opts = {
-      styles = {
-        comments = { "italic" }, -- Change the style of comments
-        conditionals = { "italic" },
-        loops = { "italic" },
-        functions = {},
-        keywords = {},
-        strings = {},
-        variables = {},
-        numbers = {},
-        booleans = { "italic" },
-        properties = {},
-        types = {},
-        operators = {},
-      },
-      integrations = {
-        native_lsp = {
-          enabled = true,
-          underlines = {
-            errors = { "undercurl" },
-            hints = { "undercurl" },
-            warnings = { "undercurl" },
-            information = { "undercurl" },
-          },
-        },
-      },
+      style = "moon",
     },
   },
+  -- {
+  --   "catppuccin/nvim",
+  --   name = "catppuccin",
+  --   priority = 1000,
+  --   event = "VimEnter",
+  --   opts = {
+  --     styles = {
+  --       comments = { "italic" }, -- Change the style of comments
+  --       conditionals = { "italic" },
+  --       loops = { "italic" },
+  --       functions = {},
+  --       keywords = {},
+  --       strings = {},
+  --       variables = {},
+  --       numbers = {},
+  --       booleans = { "italic" },
+  --       properties = {},
+  --       types = {},
+  --       operators = {},
+  --     },
+  --     integrations = {
+  --       native_lsp = {
+  --         enabled = true,
+  --         underlines = {
+  --           errors = { "undercurl" },
+  --           hints = { "undercurl" },
+  --           warnings = { "undercurl" },
+  --           information = { "undercurl" },
+  --         },
+  --       },
+  --     },
+  --   },
+  -- },
   { import = "plugins" },
 }
 
-vim.cmd [[colorscheme catppuccin-macchiato]]
+-- vim.cmd [[colorscheme catppuccin-macchiato]]
 -- vim.cmd [[colorscheme kanagawa-dragon]]
 -- vim.cmd [[colorscheme catppuccin]]
--- vim.cmd [[colorscheme tokyonight]]
+vim.cmd [[colorscheme tokyonight]]
 -- vim.cmd [[colorscheme nightfall]]
