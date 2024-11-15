@@ -1,6 +1,19 @@
 return {
   {
     "chiedo/vim-case-convert",
-    event = "VeryLazy",
+    cmd = {
+      "CamelToHyphen",
+      "CamelToSnake",
+      "HyphenToCamel",
+      "HyphenToSnake",
+      "SnakeToCamel",
+      "SnakeToHyphen",
+      "CamelToHyphenSel",
+      "CamelToSnakeSel",
+      "HyphenToCamelSel",
+      "HyphenToSnakeSel",
+      "SnakeToCamelSel",
+      "SnakeToHyphenSel",
+    },
   },
 }
